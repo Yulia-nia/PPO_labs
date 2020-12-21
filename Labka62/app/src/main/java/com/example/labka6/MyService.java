@@ -7,12 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.app.TaskStackBuilder;
+import android.widget.SeekBar;
+
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 
 public class MyService extends Service {
-        MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer;
+    int time;
+    SeekBar pos;
     @Nullable
     @Override public IBinder onBind(Intent intent) {
         return null;
@@ -27,6 +31,7 @@ public class MyService extends Service {
         mediaPlayer.setLooping(true);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this).setSmallIcon(R.drawable.ic_launcher_foreground)
                                                  .setContentTitle("My music").setContentText("Music");
+
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(MainActivity.class);
